@@ -12,6 +12,7 @@ package:
     - node_modules/**
     - .gitignore
     - .git/**
+    - test/**
 
 functions:
   app:

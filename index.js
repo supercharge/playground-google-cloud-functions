@@ -16,10 +16,12 @@ module.exports.http = async (request, response) => {
     headers: request.headers
   })
 
-  // const { 'content-type': type, 'content-encoding': encoding } = headers
-  // const isBase64Encoded = Boolean(type && !type.match(/; *charset=/)) || Boolean(encoding && encoding !== 'identity')
+  const { 'content-type': type, 'content-encoding': encoding } = headers
+  const isBase64Encoded = Boolean(type && !type.match(/; *charset=/)) || Boolean(encoding && encoding !== 'identity')
 
-  // const payload = isBase64Encoded ? rawPayload.toString('base64') : body
+  const resBody = isBase64Encoded ? rawPayload.toString('base64') : payload
+
+  console.log(resBody)
 
   // chunked transfer not currently supported by API Gateway
   if (headers['transfer-encoding'] === 'chunked') {
@@ -35,7 +37,9 @@ module.exports.http = async (request, response) => {
 
   // console.log(finalHeaders)
 
-  console.log(payload)
+  const res = response.status(statusCode).set(finalHeaders)
 
-  return response.status(statusCode).set(finalHeaders).send(payload)
+  console.log(res)
+
+  return res.send(resBody)
 }
