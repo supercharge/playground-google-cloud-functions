@@ -1,4 +1,4 @@
-service: supercharge-gcp-functions
+service: supercharge-gcp-function-testing
 
 provider:
   name: google
@@ -10,13 +10,16 @@ provider:
 package:
   exclude:
     - node_modules/**
+    - .eslintrc.json
     - .gitignore
     - .git/**
     - test/**
+    - ava.config.js
+    - .env.example
 
 functions:
   app:
-    handler: http
+    handler: httpHandler
     memorySize: 256 # default is 1024 MB
     events:
       - http: path

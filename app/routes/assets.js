@@ -17,7 +17,7 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/dev/css/{path*}',
+    path: '/{handler}/css/{path*}',
     options: {
       handler: { directory: { path: 'public/css' } }
     }
@@ -31,7 +31,7 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/dev/images/{path*}',
+    path: '/{handler}/images/{path*}',
     options: {
       handler: { directory: { path: 'public/images' } }
     }
