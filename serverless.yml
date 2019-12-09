@@ -7,16 +7,6 @@ provider:
   project: supercharge-gcp-testing
   credentials: ./supercharge-gcp-key.json
 
-package:
-  exclude:
-    - node_modules/**
-    - .eslintrc.json
-    - .gitignore
-    - .git/**
-    - test/**
-    - ava.config.js
-    - .env.example
-
 functions:
   app:
     handler: httpHandler
@@ -27,3 +17,13 @@ functions:
 plugins:
   - serverless-google-cloudfunctions
   - serverless-offline
+
+# package:
+#   exclude:
+#     - node_modules/**
+#     - .eslintrc.json
+#     - .gitignore
+#     - .git/**
+#     - test/**
+#     - ava.config.js
+#     - .env.example
