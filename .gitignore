@@ -1,0 +1,39 @@
+haters
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+.github-todos
+
+pids
+results
+
+node_modules
+npm-debug.log
+package-lock.json
+
+# code coverage folder
+coverage
+
+# Secrets
+.env
+.env.**
+
+# IDEA IntelliJ/Webstorm
+.idea
+
+# Vagrant
+.vagrant
+
+# VS Code
+.vscode
+
+# Code coverage
+.nyc_output
+
+.serverless
