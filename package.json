@@ -1,11 +1,12 @@
 {
-  "name": "supercharge-aws-lambda",
+  "name": "supercharge-google-cloud-functions",
   "description": "",
   "version": "0.0.0",
   "dependencies": {
     "@hapi/inert": "~5.2.2",
     "@sindresorhus/slugify": "~0.9.1",
     "@supercharge/framework": "1.0.0-beta6",
+    "@supercharge/hapi-google-cloud-functions": "~1.0.0",
     "cookie-parser": "~1.4.4",
     "hapi-dev-errors": "~3.3.0",
     "hapi-to-express": "~1.3.0",

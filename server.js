@@ -1,23 +1,17 @@
 'use strict'
 
-const Querystring = require('querystring')
 const App = require('@supercharge/framework/application')
+const CloudFunctionsHandler = require('@supercharge/hapi-google-cloud-functions')
 
-module.exports.httpHandler = async (request, response) => {
-  const app = await App.fromAppRoot(__dirname).httpForServerless()
+let handler
 
-  const { server } = app
-  const querystring = Querystring.stringify(request.query)
+exports.httpHandler = async (request, response) => {
+  if (!handler) {
+    const app = await App.fromAppRoot(__dirname).httpForServerless()
 
-  const { statusCode, rawPayload, headers } = await server.inject({
-    method: request.method,
-    url: querystring ? `${request.path}?${querystring}` : request.path,
-    payload: request.body,
-    headers: request.headers
-  })
+    const { server } = app
+    handler = CloudFunctionsHandler.for(server)
+  }
 
-  return response
-    .status(statusCode)
-    .set(headers)
-    .end(rawPayload)
+  return handler.proxy(request, response)
 }
